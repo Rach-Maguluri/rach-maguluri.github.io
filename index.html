@@ -19,7 +19,7 @@ a{color:#0D0D0D}a:hover{color:#CE4035}
 @media (max-width:760px){.wrap{padding:0 20px}.hero-title{font-size:40px !important}.marquee{flex-wrap:wrap !important;white-space:normal !important;gap:8px 16px !important;font-size:16px !important;padding:14px 20px !important}.big-title{font-size:44px !important}}
 .lift{transition:transform .18s ease,box-shadow .18s ease}.lift:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 #0D0D0D}@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}@keyframes bob{0%,100%{transform:translate(-50%,-50%)}50%{transform:translate(-50%,-62%)}}.bob:hover{animation:bob .6s ease-in-out infinite}@media (prefers-reduced-motion:reduce){.lift,.bob{transition:none;animation:none !important}}
 
-html{scroll-snap-type:y proximity;scroll-behavior:smooth}
+html.ready{scroll-snap-type:y proximity;scroll-behavior:smooth}
 .screen1{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;scroll-snap-align:start}
 .screen1>section{flex:1;display:flex;flex-direction:column;justify-content:center}
 .screen1>section>.wrap{padding-top:clamp(24px,4vh,64px) !important;padding-bottom:clamp(24px,4vh,64px) !important;width:100%}
@@ -36,7 +36,7 @@ body>div>section>.wrap{padding-top:clamp(28px,6vh,72px) !important;padding-botto
 #skills article>div:nth-child(2){height:84px !important}
 #pressure img{max-height:62vh;width:auto !important;max-width:100%;margin:0 auto}
 #hi h2{font-size:clamp(80px,14vh,140px) !important}
-@media (max-width:760px){html{scroll-snap-type:none}body>div>section,.screen1{min-height:auto}.screen1{min-height:100svh}}
+@media (max-width:760px){html.ready{scroll-snap-type:none}body>div>section,.screen1{min-height:auto}.screen1{min-height:100svh}}
 
 @media (min-width:761px) and (max-height:940px){
 #story .board-col{max-width:calc((100svh - 330px) * 1.2)}
@@ -55,6 +55,13 @@ body>div>section>.wrap{padding-top:clamp(28px,6vh,72px) !important;padding-botto
 }
 @media (max-width:760px){.screen1 img{max-height:21vh}.screen1 .hero-title{font-size:38px !important}.screen1 nav a{padding:7px 10px !important;font-size:12px !important}.screen1>section>.wrap{gap:22px !important}}
 </style>
+<script>
+if('scrollRestoration' in history){history.scrollRestoration='manual';}
+function toTop(){ if(!location.hash){ window.scrollTo(0,0); } }
+toTop();
+window.addEventListener('pageshow',toTop);
+window.addEventListener('load',function(){ toTop(); setTimeout(function(){ document.documentElement.classList.add('ready'); },400); });
+</script>
 </head>
 <body>
 <div style="font-family:'Familjen Grotesk',sans-serif;color:#0D0D0D;background:#FFF8EC;width:100%;overflow:hidden">
